@@ -21,3 +21,11 @@
 .open {
     color: #fff;
 }
+
+.mostrar {
+    visibility: visible;
+}
+
+.ocultar {
+    visibility: hidden;
+}

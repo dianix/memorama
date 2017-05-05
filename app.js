@@ -1,6 +1,16 @@
 var tablero = document.getElementById('tablero')
 
-var cartas = [1, 2, 3, 4, 5, 6, 7, 8];
+var cubierta = [];  
+var cartas = ["img/comida.jpg", "img/diversidad.jpg", "img/dulces.jpg", "img/juegos.jpg", "img/juguetes.jpg", "img/lugares.jpg", "img/muertos.jpg", 8];
+
+
+    for(i=0; i<16; i++) {
+        cubierta[i] = "img/comida.jpg"; 
+    }
+
+
+
+
 var parejas = cartas.length
 
 cartas = cartas.concat(cartas)
@@ -13,21 +23,22 @@ var segundaCarta = 0
 
 function turno(event) {
     var elementoSeleccionado = event.target;
-
-
+    
     if (primerCarta !== 0 && segundaCarta !== 0) {
 
-        // limpiar banderas
-        if (primerCarta.innerText !== segundaCarta.innerText) {
-            primerCarta.classList.remove('open')
-            segundaCarta.classList.remove('open')
+        // limpiar 
+        if (primerCarta.src !== segundaCarta.src) {
+            primerCarta.classList.remove('mostrar')
+            primerCarta.classList.add("ocultar")
+            segundaCarta.classList.remove('mostrar')
+            segundaCarta.classList.add("ocultar")
         }
 
         primerCarta = 0
         segundaCarta = 0
     }
-
-    elementoSeleccionado.classList.add('open')
+    elementoSeleccionado.classList.remove("ocultar")
+    elementoSeleccionado.classList.add('mostrar')
 
     if (primerCarta === 0) {
         primerCarta = elementoSeleccionado
@@ -36,7 +47,7 @@ function turno(event) {
         segundaCarta = elementoSeleccionado
         console.log('Segundo turno')
 
-        if (primerCarta.innerText === segundaCarta.innerText) {
+        if (primerCarta.src === segundaCarta.src) {
             parejas = parejas - 1
         }
 
@@ -58,10 +69,14 @@ for (var i = 0; i < 4; i++) {
     for (var j = 0; j < 4; j++) {
         var columna = document.createElement("div");
         columna.className = "col-3";
-        var elemento = document.createElement("div");
+        columna.style.backgroundColor = "black"; 
+        columna.addEventListener("click", turno, true);
+        
+        var elemento = document.createElement("img");
         elemento.className = "imagen";
-        elemento.textContent = cartas[contador];
-        elemento.addEventListener("click", turno, true);
+        elemento.src = cartas[contador];
+        
+        elemento.className.add("ocultar");
         columna.appendChild(elemento);
         fila.appendChild(columna);
         contador++;
