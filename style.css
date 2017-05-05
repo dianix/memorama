@@ -1,0 +1,22 @@
+#tablero {
+    text-align: center;
+    padding: 0 20%;
+}
+
+#tablero div div div.imagen {
+    display: inline-block;
+    background: #000;
+    margin: 5px;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+    transition: transform ease .3s;
+}
+
+#tablero div div div:hover {
+    transform: scale(1.1);
+}
+
+.open {
+    color: #fff;
+}
