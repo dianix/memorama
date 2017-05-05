@@ -61,6 +61,7 @@ for (var i = 0; i < 4; i++) {
         var elemento = document.createElement("div");
         elemento.className = "imagen";
         elemento.textContent = cartas[contador];
+        elemento.addEventListener("click", turno, true);
         columna.appendChild(elemento);
         fila.appendChild(columna);
         contador++;
